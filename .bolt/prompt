@@ -1,0 +1,63 @@
+For all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
+
+This template uses Reown AppKit for Solana wallet connections. When building components that need wallet functionality:
+
+## Wallet Integration Rules:
+1. ALWAYS use the pre-configured <appkit-button /> component for wallet connections - never create custom wallet connect buttons
+2. Use wallet connection composables from @reown/appkit/vue for wallet state management (useAppKitAccount, useAppKitNetwork, etc.)
+3. All Solana networks (mainnet, testnet, devnet) are pre-configured in src/config/index.ts
+
+## Working with App.vue:
+- The AppKit is initialized at the script setup level with the createAppKit function
+- Always include <appkit-button /> in your designs without additional loading states (AppKit handles this internally)
+- When adding new components, place them after the wallet button in the existing structure
+- Use the established styling pattern with scoped styles or add your preferred CSS framework
+
+## MANDATORY WALLET BUTTON:
+- ALWAYS include the <appkit-button /> component in every design, even if not explicitly mentioned in the user's request
+- The wallet connection is a core feature of this template and must be present in all builds
+- Position it prominently, typically near the top of the page or in a header section
+- The wallet modal automatically has proper z-index handling
+
+## Example App.vue modifications:
+```vue
+<template>
+  <div class="app">
+    <header>
+      <h1>Your App Title</h1>
+      <div class="wallet-connect">
+        <appkit-button />
+      </div>
+    </header>
+    
+    <main>
+      <!-- Add your components here -->
+      <YourNewComponent />
+    </main>
+  </div>
+</template>
+
+<style scoped>
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.wallet-connect {
+  margin: 1rem 0;
+  text-align: center;
+}
+</style>
+```
+
+## CRITICAL RULES:
+- NEVER modify files in src/config/* - these contain essential wallet configuration
+- NEVER modify vite.config.ts or .env - these are core setup files
+- NEVER write package.json directly - use npm commands to install packages if needed
+- ALWAYS use <appkit-button /> for wallet connections instead of custom implementations
+- NEVER move or remove the AppKit initialization logic from the script setup
+
+For icons, use any icon library you prefer. For styling, use any CSS approach you prefer (CSS modules, scoped styles, Tailwind, etc.).
+
+The wallet connection is automatically handled - focus on building great user experiences around the connected wallet state.
