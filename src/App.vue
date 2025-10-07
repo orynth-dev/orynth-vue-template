@@ -9,7 +9,7 @@ createAppKit({
   metadata: {
     name: 'Orynth Website Builder',
     description: 'Orynth - Build websites with wallet integration',
-    url: 'https://orynth.com',
+    url: 'https://orynth.dev',
     icons: ['https://avatars.githubusercontent.com/u/179229932?s=200&v=4']
   }
 })
